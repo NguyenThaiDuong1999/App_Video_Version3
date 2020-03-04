@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AppVideo</string>
+    <string name="logo_name">MyVideo</string>
+    <string name="home">Home</string>
+    <string name="trending">Trending</string>
+    <string name="login">Log in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="dangki">Đăng kí</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="searchvideo">Search video</string>
+    /*bỏ
+    <string name="music">Music</string>
+    <string name="gaming">Gaming</string>
+    <string name="news">News</string>
+    <string name="movies">Movies</string>
+    */
+    <string name="hotvideo">Hot video</string>
+    <string name="category">Category</string>
+    <string name="phimtonghop">The New Mutants (Dị Nhân Thế Hệ Mới) sẽ khởi chiếu vào ngày 03/04/2020...</string>
+</resources>

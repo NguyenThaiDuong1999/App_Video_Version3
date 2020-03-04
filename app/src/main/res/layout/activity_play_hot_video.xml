@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whitesmoke">
+
+        <VideoView
+            android:id="@+id/vvplayvideo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/icpausevideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_65sdp"
+            android:src="@drawable/ic_pause_video" />
+
+        <ImageView
+            android:id="@+id/icplayvideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_65sdp"
+            android:src="@drawable/ic_play_video"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/icbackvideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_65sdp"
+            android:src="@drawable/ic_skip_previous_video" />
+
+        <ImageView
+            android:id="@+id/icnextvideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_210sdp"
+            android:layout_marginTop="@dimen/_65sdp"
+            android:src="@drawable/ic_skip_next_video" />
+
+        <TextView
+            android:id="@+id/tvplayvideo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/vvplayvideo"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbplayhotvideo"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_120sdp" />
+
+        <TextView
+            android:id="@+id/tvcurrenttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_120sdp"
+            android:layout_toLeftOf="@+id/sbplayhotvideo"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvdurationtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_120sdp"
+            android:layout_toRightOf="@+id/sbplayhotvideo"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgzoomout"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_135sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:src="@drawable/ic_zoom_out_map_black_24dp" />
+
+        <FrameLayout
+            android:id="@+id/playhotvideocontainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_200sdp"></FrameLayout>
+
+    </RelativeLayout>
+</layout>
