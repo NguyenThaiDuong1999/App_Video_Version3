@@ -18,9 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a38_nguyenthaiduong_appvideo.Adapter.VideoTrendingAdapter;
 import com.example.a38_nguyenthaiduong_appvideo.Define.Define;
+import com.example.a38_nguyenthaiduong_appvideo.Define.Define_Method;
 import com.example.a38_nguyenthaiduong_appvideo.Interface.IonClickAvatarVideoTrending;
+import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.Object.VideoTrending;
 import com.example.a38_nguyenthaiduong_appvideo.R;
+import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
 import com.example.a38_nguyenthaiduong_appvideo.databinding.ListVideoTrendingBinding;
 
 import org.json.JSONArray;
@@ -39,6 +42,10 @@ public class ListVideoTrending extends Fragment {
     VideoTrendingAdapter videoTrendingAdapter;
     String urlApihotvideo1 = Define.STRING_HOTVIDEO;
     private IonClickAvatarVideoTrending ionClickAvatarVideoTrending;
+
+    SQLHelperMain sqlHelperMain;
+    Define_Method define_method = new Define_Method();
+    ArrayList<History> arrayListSQL;
 
     public static ListVideoTrending newInstance() {
 
@@ -67,6 +74,14 @@ public class ListVideoTrending extends Fragment {
             @Override
             public void onClickAvatarVideoTrending(VideoTrending videoTrending) {
                 ionClickAvatarVideoTrending.onClickAvatarVideoTrending(videoTrending);
+                History item = new History(videoTrending.getAvatar(),videoTrending.getTenphim(),videoTrending.getUrl());
+                sqlHelperMain = new SQLHelperMain(getContext());
+                arrayListSQL = sqlHelperMain.getAllItem();
+
+                if (arrayListSQL.isEmpty()==false && define_method.CHECK(item.getTenphim(),arrayListSQL)){
+                    sqlHelperMain.deleteItem(item.getTenphim());
+                }
+                sqlHelperMain.insertVideo(item);
             }
         });
 

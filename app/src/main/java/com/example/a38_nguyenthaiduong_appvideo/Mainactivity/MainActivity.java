@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.a38_nguyenthaiduong_appvideo.Fragment.ListHistory;
 import com.example.a38_nguyenthaiduong_appvideo.Fragment.ListVideoMain;
 import com.example.a38_nguyenthaiduong_appvideo.Fragment.PlayCategoryVideo;
 import com.example.a38_nguyenthaiduong_appvideo.Fragment.PlayHotVideo;
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements IonClickAvatarVid
                     break;
                 case R.id.nav_trending:
                     getFragment(new Trending());
+                    break;
+                case R.id.nav_history:
+                    getFragment(new ListHistory());
                     break;
             }
             return true;

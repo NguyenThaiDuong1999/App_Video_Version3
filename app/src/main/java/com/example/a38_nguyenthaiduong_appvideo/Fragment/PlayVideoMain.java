@@ -148,7 +148,7 @@ public class PlayVideoMain extends Fragment {
                         binding.sbplayvideomain.setVisibility(View.GONE);
                     }
                 }, 6000);
-                return false;
+                return true;
             }
         });
 

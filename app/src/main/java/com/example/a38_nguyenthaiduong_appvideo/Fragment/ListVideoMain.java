@@ -18,11 +18,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a38_nguyenthaiduong_appvideo.Adapter.VideoAdapter;
+import com.example.a38_nguyenthaiduong_appvideo.Adapter.VideoMainAdapter;
 import com.example.a38_nguyenthaiduong_appvideo.Define.Define;
+import com.example.a38_nguyenthaiduong_appvideo.Define.Define_Method;
 import com.example.a38_nguyenthaiduong_appvideo.Interface.IonClickAvatar;
+import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.Object.Video;
 import com.example.a38_nguyenthaiduong_appvideo.R;
+import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
 import com.example.a38_nguyenthaiduong_appvideo.databinding.RvMainBinding;
 
 import org.json.JSONArray;
@@ -40,16 +43,19 @@ public class ListVideoMain extends Fragment {
 
     RvMainBinding binding;
     String urlApi = Define.STRING_HOTVIDEO_CATEGORY;
-    List<Video> videos;
-    VideoAdapter videoAdapter;
+    ArrayList<Video> videos;
+    VideoMainAdapter videoAdapter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Set<String> seturl = new ArraySet<>();
 
+    SQLHelperMain sqlHelperMain;
+    Define_Method define_method = new Define_Method();
+    ArrayList<History> arrayListSQL;
+
     public static ListVideoMain newInstance() {
 
         Bundle args = new Bundle();
-
         ListVideoMain fragment = new ListVideoMain();
         fragment.setArguments(args);
         return fragment;
@@ -60,7 +66,7 @@ public class ListVideoMain extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.rv_main, container, false);
         videos = new ArrayList<>();
-        videoAdapter = new VideoAdapter(videos);
+        videoAdapter = new VideoMainAdapter(videos);
         binding.rvmain.setAdapter(videoAdapter);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         binding.rvmain.setLayoutManager(layoutManager);
@@ -82,6 +88,15 @@ public class ListVideoMain extends Fragment {
                 editor.putStringSet("seturl", seturl);
                 editor.commit();
                 getFragmentManager().beginTransaction().replace(R.id.animationcontainer, new PlayVideoMain()).commit();
+
+                History item = new History(video.getAvatar(),video.getTenphim(),video.getUrl());
+                sqlHelperMain = new SQLHelperMain(getContext());
+                arrayListSQL = sqlHelperMain.getAllItem();
+
+                if (arrayListSQL.isEmpty()==false && define_method.CHECK(item.getTenphim(),arrayListSQL)){
+                    sqlHelperMain.deleteItem(item.getTenphim());
+                }
+                sqlHelperMain.insertVideo(item);
             }
         });
 
