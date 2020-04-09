@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a38_nguyenthaiduong_appvideo.Interface.IonClickAvatarHistory;
 import com.example.a38_nguyenthaiduong_appvideo.Object.History;
-import com.example.a38_nguyenthaiduong_appvideo.Object.Video;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +35,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHode
     @Override
     public ViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_history, parent, false);
+        View view = inflater.inflate(R.layout.itemlisthistory, parent, false);
         context = parent.getContext();
         HistoryAdapter.ViewHoder viewhoder = new HistoryAdapter.ViewHoder(view);
         return viewhoder;

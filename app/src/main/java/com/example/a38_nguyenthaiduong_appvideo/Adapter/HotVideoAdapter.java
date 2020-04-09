@@ -35,7 +35,7 @@ public class HotVideoAdapter extends RecyclerView.Adapter<HotVideoAdapter.ViewHo
     @Override
     public ViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_hotvideo, parent, false);
+        View view = inflater.inflate(R.layout.itemlisthotvideo, parent, false);
         context = parent.getContext();
         ViewHoder viewhoder = new ViewHoder(view);
         return viewhoder;

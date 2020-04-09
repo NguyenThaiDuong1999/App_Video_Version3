@@ -22,7 +22,7 @@ import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.Object.HotVideo;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
-import com.example.a38_nguyenthaiduong_appvideo.databinding.RvHotVideoBinding;
+import com.example.a38_nguyenthaiduong_appvideo.databinding.ListhotvideoBinding;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,7 +35,7 @@ import java.util.List;
 
 public class ListHotVideo extends Fragment {
 
-    RvHotVideoBinding binding;
+    ListhotvideoBinding binding;
     List<HotVideo> hotVideos;
     HotVideoAdapter hotVideoAdapter;
     String urlApihotvideo = Define.STRING_HOTVIDEO;
@@ -57,7 +57,7 @@ public class ListHotVideo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.rv_hot_video, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.listhotvideo, container, false);
 
         hotVideos = new ArrayList<>();
         new DoGetData(urlApihotvideo).execute();

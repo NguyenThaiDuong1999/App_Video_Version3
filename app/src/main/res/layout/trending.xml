@@ -19,6 +19,7 @@
                 android:weightSum="3">
 
                 <ImageView
+                    android:id="@+id/imghotvideo"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -26,12 +27,13 @@
                     android:src="@drawable/ic_music" />
 
                 <TextView
+                    android:id="@+id/tvhotvideo"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/hotvideo"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -45,6 +47,7 @@
                 android:weightSum="3">
 
                 <ImageView
+                    android:id="@+id/imgcategory"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -52,12 +55,13 @@
                     android:src="@drawable/ic_categoty_2" />
 
                 <TextView
+                    android:id="@+id/tvcategory"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/category"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
             </LinearLayout>

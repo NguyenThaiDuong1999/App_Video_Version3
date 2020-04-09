@@ -6,10 +6,14 @@
         android:title="Home"/>
     <item
         android:id="@+id/nav_trending"
-        android:icon="@drawable/ic_trending"
-        android:title="Trending"/>
+        android:icon="@drawable/ic_explore_black_24dp"
+        android:title="Explore"/>
     <item
         android:id="@+id/nav_history"
         android:icon="@drawable/ic_history_black_24dp"
         android:title="History"/>
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"/>
 </menu>

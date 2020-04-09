@@ -22,7 +22,7 @@ import com.example.a38_nguyenthaiduong_appvideo.Object.Category;
 import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
-import com.example.a38_nguyenthaiduong_appvideo.databinding.RvCategoryBinding;
+import com.example.a38_nguyenthaiduong_appvideo.databinding.ListcategoryvideoBinding;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListCategoryVideo extends Fragment {
-    RvCategoryBinding binding;
+    ListcategoryvideoBinding binding;
     List<Category> categories;
     CategoryAdapter categoryAdapter;
     String urlApiCategory = Define.STRING_CATEGORY;
@@ -56,7 +56,7 @@ public class ListCategoryVideo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.rv_category, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.listcategoryvideo, container, false);
 
         categories = new ArrayList<>();
         new DoGetData(urlApiCategory).execute();

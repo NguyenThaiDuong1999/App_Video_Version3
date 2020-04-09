@@ -34,7 +34,7 @@ public class VideoTrendingAdapter extends RecyclerView.Adapter<VideoTrendingAdap
     @Override
     public ViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_list_video_trending, parent, false);
+        View view = inflater.inflate(R.layout.itemlistvideotrending, parent, false);
         context = parent.getContext();
         ViewHoder viewHoder = new ViewHoder(view);
         return viewHoder;
@@ -52,7 +52,7 @@ public class VideoTrendingAdapter extends RecyclerView.Adapter<VideoTrendingAdap
         holder.imganhphim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ionClickAvatarVideoTrending.onClickAvatarVideoTrending(videoTrending);
+                ionClickAvatarVideoTrending.onClickAvatarVideoTrending(videoTrending, position);
             }
         });
     }

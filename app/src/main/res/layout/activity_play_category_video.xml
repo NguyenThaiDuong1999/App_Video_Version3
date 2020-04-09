@@ -53,7 +53,10 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/nabila"
+            android:paddingLeft="@dimen/_3sdp"
+            android:paddingRight="@dimen/_3sdp"/>
 
         <SeekBar
             android:id="@+id/sbplaycategoryvideo"

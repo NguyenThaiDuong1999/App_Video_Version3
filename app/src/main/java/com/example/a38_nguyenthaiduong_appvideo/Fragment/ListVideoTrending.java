@@ -1,10 +1,8 @@
 package com.example.a38_nguyenthaiduong_appvideo.Fragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,7 @@ import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.Object.VideoTrending;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
-import com.example.a38_nguyenthaiduong_appvideo.databinding.ListVideoTrendingBinding;
+import com.example.a38_nguyenthaiduong_appvideo.databinding.ListvideotrendingBinding;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,7 +35,7 @@ import java.util.List;
 
 public class ListVideoTrending extends Fragment {
 
-    ListVideoTrendingBinding binding;
+    ListvideotrendingBinding binding;
     List<VideoTrending> videoTrendings;
     VideoTrendingAdapter videoTrendingAdapter;
     String urlApihotvideo1 = Define.STRING_HOTVIDEO;
@@ -59,7 +57,7 @@ public class ListVideoTrending extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.list_video_trending, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.listvideotrending, container, false);
 
         videoTrendings = new ArrayList<>();
         new DoGetData(urlApihotvideo1).execute();
@@ -72,8 +70,8 @@ public class ListVideoTrending extends Fragment {
 
         videoTrendingAdapter.setIonClickAvatarVideoTrending(new IonClickAvatarVideoTrending() {
             @Override
-            public void onClickAvatarVideoTrending(VideoTrending videoTrending) {
-                ionClickAvatarVideoTrending.onClickAvatarVideoTrending(videoTrending);
+            public void onClickAvatarVideoTrending(VideoTrending videoTrending, int position) {
+                ionClickAvatarVideoTrending.onClickAvatarVideoTrending(videoTrending, position);
                 History item = new History(videoTrending.getAvatar(),videoTrending.getTenphim(),videoTrending.getUrl());
                 sqlHelperMain = new SQLHelperMain(getContext());
                 arrayListSQL = sqlHelperMain.getAllItem();
@@ -82,6 +80,11 @@ public class ListVideoTrending extends Fragment {
                     sqlHelperMain.deleteItem(item.getTenphim());
                 }
                 sqlHelperMain.insertVideo(item);
+
+                VideoTrending videoTrendingtam = videoTrending;
+                videoTrendings.remove(position);
+                videoTrendings.add(videoTrendings.size(), videoTrendingtam);
+                videoTrendingAdapter.notifyDataSetChanged();
             }
         });
 

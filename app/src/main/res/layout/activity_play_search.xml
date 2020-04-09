@@ -50,16 +50,16 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@+id/vvplayvideo"
+            android:fontFamily="@font/nabila"
             android:gravity="center"
+            android:paddingLeft="@dimen/_3sdp"
+            android:paddingRight="@dimen/_3sdp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/nabila"
-            android:paddingLeft="@dimen/_3sdp"
-            android:paddingRight="@dimen/_3sdp"/>
+            android:textStyle="bold" />
 
         <SeekBar
-            android:id="@+id/sbplayhotvideo"
+            android:id="@+id/sbplaysearch"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_120sdp"
-            android:layout_toLeftOf="@+id/sbplayhotvideo"
+            android:layout_toLeftOf="@+id/sbplaysearch"
             android:text="00:00"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_120sdp"
-            android:layout_toRightOf="@+id/sbplayhotvideo"
+            android:layout_toRightOf="@+id/sbplaysearch"
             android:text="00:00"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -95,10 +95,10 @@
             android:src="@drawable/ic_zoom_out_map_black_24dp" />
 
         <FrameLayout
-            android:id="@+id/playhotvideocontainer"
+            android:id="@+id/playSearchContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_200sdp"></FrameLayout>
+            android:layout_below="@+id/tvplayvideo" />
 
     </RelativeLayout>
 </layout>

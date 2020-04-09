@@ -1,5 +1,6 @@
 package com.example.a38_nguyenthaiduong_appvideo.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,20 +17,20 @@ import com.example.a38_nguyenthaiduong_appvideo.Adapter.HistoryAdapter;
 import com.example.a38_nguyenthaiduong_appvideo.Define.Define_Method;
 import com.example.a38_nguyenthaiduong_appvideo.Interface.IonClickAvatarHistory;
 import com.example.a38_nguyenthaiduong_appvideo.Object.History;
-import com.example.a38_nguyenthaiduong_appvideo.Object.Video;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
-import com.example.a38_nguyenthaiduong_appvideo.databinding.HistoryBinding;
+import com.example.a38_nguyenthaiduong_appvideo.databinding.ActivityHistoryBinding;
 
 import java.util.ArrayList;
 
 public class ListHistory extends Fragment {
-    HistoryBinding binding;
+    ActivityHistoryBinding binding;
     ArrayList<History> historyList;
     ArrayList<History> histories;
     HistoryAdapter historyAdapter;
     SQLHelperMain sqlHelperMain;
     Define_Method define_method = new Define_Method();
+    IonClickAvatarHistory ionClickAvatarHistory;
 
     public static ListHistory newInstance() {
 
@@ -43,7 +44,7 @@ public class ListHistory extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.history, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.activity_history, container, false);
 
         histories = new ArrayList<>();
         historyList = new ArrayList<>();
@@ -74,6 +75,8 @@ public class ListHistory extends Fragment {
                     sqlHelperMain.deleteItem(history.getTenphim());
                 }
                 sqlHelperMain.insertVideo(history);
+
+                ionClickAvatarHistory.onClickAvatarHistory(history);
             }
         });
         binding.rvhistory.setAdapter(historyAdapter);
@@ -82,5 +85,15 @@ public class ListHistory extends Fragment {
         binding.rvhistory.setLayoutManager(layoutManager);
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof IonClickAvatarHistory){
+            ionClickAvatarHistory = (IonClickAvatarHistory) context;
+        }else{
+            throw new RuntimeException(context.toString() + "must implement");
+        }
     }
 }

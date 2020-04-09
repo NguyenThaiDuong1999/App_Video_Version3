@@ -32,12 +32,13 @@ public class AnimationDraw extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.animationdraw, container, false);
         //Animation Drawer
         AnimationDrawable animationDrawable = new AnimationDrawable();
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer1), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer2), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer3), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer4), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer5), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.anidrawer6), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad1), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad2), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad3), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad4), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad5), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad6), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.ad7), 3000);
         animationDrawable.setOneShot(false);
         binding.imganimationdrawer.setImageDrawable(animationDrawable);
         animationDrawable.start();

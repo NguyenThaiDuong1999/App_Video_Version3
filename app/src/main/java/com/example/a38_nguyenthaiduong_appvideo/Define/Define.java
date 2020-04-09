@@ -13,4 +13,6 @@ public class Define {
     public static final String STRING_TEN_PHIM_HOT_VIDEO = "tenphimhotvideo";
     public static final String STRING_URL_CATEGORY_VIDEO = "urlcategoryvideo";
     public static final String STRING_TEN_PHIM_CATEGORY_VIDEO = "tenphimcategoryvideo";
+    public static final String STRING_URL_SEARCH = "urlsearch";
+    public static final String STRING_TEN_PHIM_SEARCH = "tenphimsearch";
 }

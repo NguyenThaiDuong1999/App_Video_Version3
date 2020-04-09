@@ -26,7 +26,7 @@ import com.example.a38_nguyenthaiduong_appvideo.Object.History;
 import com.example.a38_nguyenthaiduong_appvideo.Object.Video;
 import com.example.a38_nguyenthaiduong_appvideo.R;
 import com.example.a38_nguyenthaiduong_appvideo.SQL.SQLHelperMain;
-import com.example.a38_nguyenthaiduong_appvideo.databinding.RvMainBinding;
+import com.example.a38_nguyenthaiduong_appvideo.databinding.ListvideomainBinding;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,13 +35,12 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class ListVideoMain extends Fragment {
 
-    RvMainBinding binding;
+    ListvideomainBinding binding;
     String urlApi = Define.STRING_HOTVIDEO_CATEGORY;
     ArrayList<Video> videos;
     VideoMainAdapter videoAdapter;
@@ -64,17 +63,16 @@ public class ListVideoMain extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.rv_main, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.listvideomain, container, false);
         videos = new ArrayList<>();
         videoAdapter = new VideoMainAdapter(videos);
         binding.rvmain.setAdapter(videoAdapter);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         binding.rvmain.setLayoutManager(layoutManager);
+        new DoGetData(urlApi).execute();
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         editor = sharedPreferences.edit();
-
-        new DoGetData(urlApi).execute();
 
         // Gọi fragment animationDrawer
         getFragmentManager().beginTransaction().replace(R.id.animationcontainer, new AnimationDraw()).commit();
@@ -89,6 +87,7 @@ public class ListVideoMain extends Fragment {
                 editor.commit();
                 getFragmentManager().beginTransaction().replace(R.id.animationcontainer, new PlayVideoMain()).commit();
 
+                //SQL
                 History item = new History(video.getAvatar(),video.getTenphim(),video.getUrl());
                 sqlHelperMain = new SQLHelperMain(getContext());
                 arrayListSQL = sqlHelperMain.getAllItem();
@@ -97,6 +96,12 @@ public class ListVideoMain extends Fragment {
                     sqlHelperMain.deleteItem(item.getTenphim());
                 }
                 sqlHelperMain.insertVideo(item);
+
+                //Đổi chỗ clicked-video -> end
+                Video videotam = video;
+                videos.remove(position);
+                videos.add(videos.size(), videotam);
+                videoAdapter.notifyDataSetChanged();
             }
         });
 
